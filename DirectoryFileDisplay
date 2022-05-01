@@ -1,0 +1,25 @@
+!/bash/sh
+read -p 'Enter a directory: ' n1
+for output in $(sudo find / -name $n1)
+do
+        echo  '
+Directories found for the output provided  '$output'  The count for file and directories below:'
+        tree on $output | grep directories
+        while true;
+        do
+            read -r -p "Yes or no? " response
+            if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+            then
+                read -p 'Enter directory : ' n2
+                for output in $(sudo find / -name $n2)
+                do
+                        echo  'Directories found for the output provided  '$output'  The count for file and directories below:'
+                        tree on $output | grep directories
+                done
+            else
+                exit 0
+            fi
+        done
+
+
+done
