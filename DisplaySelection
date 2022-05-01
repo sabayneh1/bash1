@@ -1,1 +1,27 @@
+4.
+!/bash/sh
+echo "chose from the list command below:"
+ps3="select mode:"
+select mode in pwd who w whoami hostname kernelversion date lastlog PIDsystemd defaulttarget PIDNetworkManager rssysLogstatus myfiles messages exit
+do
+        case $mode in
+                pwd) echo `$mode`;;
+                who) echo `who`;;
+                w) echo  `w`;;
+                whoami) echo `whoami`;;
+                hostname) echo `hostname`;;
+                kernelversion) echo `uname -r`;;
+                date) echo `date`;;
+                lastlog) echo `lastlog`;;
+                PIDsystemd) echo `pidof systemd`;;
+                defaulttarget) echo ' /etc/ssytemd/system/default';;
+                PIDNetworkManager) echo `pidof NetworkManager`;;
+                rssysLogstatus) echo `systemctl status rsyslog`;;
+                myfiles) echo `find /home/samander -type f`;;
+                messages) echo `sudo tail -10 /var/log/messages`;;
+                exit) exit;;
+        esac
+
+done
+
 
